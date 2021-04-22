@@ -38,6 +38,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "cuprite", "= 0.11"
   spec.add_development_dependency "listen", "~> 3.0"
   spec.add_development_dependency "minitest", "~> 5.0"
+  spec.add_development_dependency "mdl"
   spec.add_development_dependency "mocha"
   spec.add_development_dependency "pry"
   spec.add_development_dependency "rubocop", "= 0.82"
