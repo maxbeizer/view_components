@@ -53,6 +53,7 @@ Use `ButtonGroup` to render a series of buttons.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
+| `tag` | `Symbol` | `:div` | One of `:div` and `:span`. |
 | `variant` | `Symbol` | `Primer::ButtonComponent::DEFAULT_VARIANT` | One of `:small`, `:medium`, or `:large`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 

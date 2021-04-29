@@ -5,6 +5,9 @@ module Primer
   class ButtonGroup < Primer::Component
     status :beta
 
+    DEFAULT_TAG = :div
+    TAG_OPTIONS = [:div, :span].freeze
+
     # Required list of buttons to be rendered.
     #
     # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::ButtonComponent) %> except for `variant` and `group_item`.
@@ -41,12 +44,13 @@ module Primer
     #     <% component.button(scheme: :outline) { "Outline" } %>
     #   <% end %>
     #
+    # @param tag [Symbol] <%= one_of(Primer::ButtonGroup::TAG_OPTIONS) %>
     # @param variant [Symbol] <%= one_of(Primer::ButtonComponent::VARIANT_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(variant: Primer::ButtonComponent::DEFAULT_VARIANT, **system_arguments)
+    def initialize(tag: DEFAULT_TAG, variant: Primer::ButtonComponent::DEFAULT_VARIANT, **system_arguments)
       @variant = variant
       @system_arguments = system_arguments
-      @system_arguments[:tag] ||= :div
+      @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
 
       @system_arguments[:classes] = class_names(
         "BtnGroup",

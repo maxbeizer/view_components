@@ -250,6 +250,10 @@
 - component: ButtonGroup
   source: https://github.com/primer/view_components/tree/main/app/components/primer/button_group.rb
   parameters:
+  - name: tag
+    type: Symbol
+    default: "`:div`"
+    description: One of `:div` and `:span`.
   - name: variant
     type: Symbol
     default: "`Primer::ButtonComponent::DEFAULT_VARIANT`"
@@ -495,6 +499,10 @@
 - component: Label
   source: https://github.com/primer/view_components/tree/main/app/components/primer/label_component.rb
   parameters:
+  - name: tag
+    type: Symbol
+    default: "`:span`"
+    description: ''
   - name: title
     type: String
     default: N/A
