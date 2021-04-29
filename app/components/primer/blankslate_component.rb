@@ -8,6 +8,9 @@ module Primer
   class BlankslateComponent < Primer::Component
     status :beta
 
+    DEFAULT_TAG = :div
+    TAG_OPTIONS = [DEFAULT_TAG, :span].freeze
+
     # Optional Spinner.
     #
     # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::SpinnerComponent) %>.
@@ -90,6 +93,7 @@ module Primer
     # @param large [Boolean] Increases the font size.
     # @param spacious [Boolean] Adds extra padding.
     def initialize(
+      tag: DEFAULT_TAG,
       title: "",
       title_tag: :h3,
       icon: "",
@@ -111,7 +115,7 @@ module Primer
       **system_arguments
     )
       @system_arguments = system_arguments
-      @system_arguments[:tag] ||= :div
+      @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "blankslate",
